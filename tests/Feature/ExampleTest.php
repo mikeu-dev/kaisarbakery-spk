@@ -1,7 +1,10 @@
 <?php
 
-test('returns a successful response', function () {
+test('root redirects to panel login', function () {
     $response = $this->get('/');
 
-    $response->assertOk();
+    $response->assertRedirect('/panel');
+
+    $panel = $this->get('/panel/login');
+    $panel->assertOk();
 });
