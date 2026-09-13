@@ -86,6 +86,9 @@
                     Berdasarkan kedekatan relatif solusi ideal: Vi = D- / (D- + D+). Nilai tertinggi menjadi alternatif terbaik.
                 </x-slot>
 
+                <!-- Tampilan Podium 1 2 3 Karyawan Terbaik -->
+                @include('filament.components.topsis-podium', ['rankings' => $topsisResult['rankings']])
+
                 <div style="overflow-x: auto; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px;">
                     <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.875rem;">
                         <thead style="background: rgba(0,0,0,0.03); border-bottom: 2px solid rgba(0,0,0,0.08); font-size: 0.75rem; text-transform: uppercase; color: #6b7280;">
