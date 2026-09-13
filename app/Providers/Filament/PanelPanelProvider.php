@@ -28,9 +28,15 @@ class PanelPanelProvider extends PanelProvider
             ->id('panel')
             ->path('panel')
             ->login()
-            ->brandName('Kaisar Bakery - SPK & Presensi')
+            ->brandName('🥐 Kaisar Bakery - SPK & Presensi')
+            ->font('Plus Jakarta Sans')
             ->colors([
                 'primary' => Color::Amber,
+                'gray' => Color::Stone,
+                'warning' => Color::Orange,
+                'success' => Color::Emerald,
+                'danger' => Color::Rose,
+                'info' => Color::Sky,
             ])
             ->navigationGroups([
                 'Master Data',
