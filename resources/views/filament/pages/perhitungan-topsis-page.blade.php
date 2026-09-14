@@ -49,33 +49,6 @@
             </div>
         </x-filament::section>
 
-        <!-- Filament Tabs for TOPSIS Stages -->
-        <x-filament::tabs>
-            <x-filament::tabs.item :active="$activeTab === 'hasil_akhir'" wire:click="$set('activeTab', 'hasil_akhir')" icon="heroicon-m-trophy">
-                1. Perangkingan Akhir (Vi)
-            </x-filament::tabs.item>
-
-            <x-filament::tabs.item :active="$activeTab === 'matriks_x'" wire:click="$set('activeTab', 'matriks_x')" icon="heroicon-m-table-cells">
-                2. Matriks Keputusan (X)
-            </x-filament::tabs.item>
-
-            <x-filament::tabs.item :active="$activeTab === 'matriks_r'" wire:click="$set('activeTab', 'matriks_r')" icon="heroicon-m-calculator">
-                3. Normalisasi Matriks (R)
-            </x-filament::tabs.item>
-
-            <x-filament::tabs.item :active="$activeTab === 'matriks_y'" wire:click="$set('activeTab', 'matriks_y')" icon="heroicon-m-scale">
-                4. Matriks Terbobot (Y)
-            </x-filament::tabs.item>
-
-            <x-filament::tabs.item :active="$activeTab === 'solusi_ideal'" wire:click="$set('activeTab', 'solusi_ideal')" icon="heroicon-m-sparkles">
-                5. Solusi Ideal (A+ / A-)
-            </x-filament::tabs.item>
-
-            <x-filament::tabs.item :active="$activeTab === 'jarak_ideal'" wire:click="$set('activeTab', 'jarak_ideal')" icon="heroicon-m-arrows-right-left">
-                6. Jarak Euclidean (D+ / D-)
-            </x-filament::tabs.item>
-        </x-filament::tabs>
-
         <!-- TAB CONTENT 1: HASIL PERANGKINGAN AKHIR -->
         @if($activeTab === 'hasil_akhir')
         <x-filament::section icon="heroicon-o-trophy">
