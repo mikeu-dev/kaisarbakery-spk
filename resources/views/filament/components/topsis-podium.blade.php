@@ -9,7 +9,7 @@ $rank3 = $rankings[2] ?? null;
     <div style="text-align: center; margin-bottom: 24px;">
         <div style="display: inline-flex; align-items: center; gap: 6px; margin-bottom: 4px;">
             <x-filament::badge color="warning" icon="heroicon-m-sparkles" size="sm">
-                PODIUM JUARA TOPSIS
+                PODIUM PERINGKAT TOPSIS
             </x-filament::badge>
         </div>
         <h3 style="font-size: 1.25rem; font-weight: 800; color: #1f2937; margin: 0;">
@@ -22,7 +22,7 @@ $rank3 = $rankings[2] ?? null;
 
     <div style="display: flex; justify-content: center; align-items: flex-end; gap: 12px; max-width: 640px; margin: 0 auto;">
 
-        <!-- PODIUM 2 (SILVER - JUARA 2) -->
+        <!-- PODIUM 2 (SILVER - PERINGKAT 2) -->
         <div style="flex: 1; max-width: 190px; display: flex; flex-direction: column; align-items: center; text-align: center;">
             <div style="margin-bottom: 10px; display: flex; flex-direction: column; align-items: center;">
                 <div style="font-size: 1.6rem; line-height: 1; margin-bottom: 4px;">🥈</div>
@@ -46,7 +46,7 @@ $rank3 = $rankings[2] ?? null;
             </div>
         </div>
 
-        <!-- PODIUM 1 (GOLD - JUARA 1) -->
+        <!-- PODIUM 1 (GOLD - PERINGKAT 1) -->
         <div style="flex: 1.15; max-width: 220px; display: flex; flex-direction: column; align-items: center; text-align: center;">
             <div style="margin-bottom: 10px; display: flex; flex-direction: column; align-items: center;">
                 <div style="font-size: 2.25rem; line-height: 1; margin-bottom: 2px; filter: drop-shadow(0 2px 6px rgba(217,119,6,0.4));">👑</div>
@@ -67,11 +67,11 @@ $rank3 = $rankings[2] ?? null;
             <div style="width: 100%; height: 165px; background: linear-gradient(180deg, #f59e0b 0%, #b45309 100%); border-radius: 16px 16px 0 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff; box-shadow: 0 -4px 15px rgba(217,119,6,0.35);">
                 <div style="font-size: 1.2rem; margin-bottom: -4px;">🏆</div>
                 <span style="font-size: 3.5rem; font-weight: 900; line-height: 1;">1</span>
-                <span style="font-size: 0.75rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px;">JUARA 1</span>
+                <span style="font-size: 0.75rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px;">PERINGKAT 1</span>
             </div>
         </div>
 
-        <!-- PODIUM 3 (BRONZE - JUARA 3) -->
+        <!-- PODIUM 3 (BRONZE - PERINGKAT 3) -->
         <div style="flex: 1; max-width: 190px; display: flex; flex-direction: column; align-items: center; text-align: center;">
             <div style="margin-bottom: 10px; display: flex; flex-direction: column; align-items: center;">
                 <div style="font-size: 1.6rem; line-height: 1; margin-bottom: 4px;">🥉</div>
