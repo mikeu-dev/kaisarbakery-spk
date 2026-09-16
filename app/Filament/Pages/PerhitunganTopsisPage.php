@@ -5,12 +5,13 @@ namespace App\Filament\Pages;
 use App\Services\TopsisService;
 use BackedEnum;
 use Filament\Actions\Action;
-use Filament\Navigation\NavigationItem;
 use Filament\Notifications\Notification;
-use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Pages\Page;
+use Filament\Schemas\Components\Tabs;
+use Filament\Schemas\Components\Tabs\Tab;
+use Filament\Schemas\Components\View;
+use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
-use Livewire\Attributes\Url;
 use UnitEnum;
 
 class PerhitunganTopsisPage extends Page
@@ -27,52 +28,9 @@ class PerhitunganTopsisPage extends Page
 
     protected static ?string $navigationLabel = 'Kalkulasi TOPSIS';
 
-    protected static ?SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
-
     public string $periode = '2026-09';
 
-    #[Url]
-    public string $activeTab = 'hasil_akhir';
-
     public array $topsisResult = [];
-
-    /**
-     * @return array<NavigationItem>
-     */
-    public function getSubNavigation(): array
-    {
-        return [
-            NavigationItem::make('1. Perangkingan Akhir (Vi)')
-                ->icon('heroicon-m-trophy')
-                ->isActiveWhen(fn (): bool => $this->activeTab === 'hasil_akhir')
-                ->extraAttributes(['wire:click' => "\$set('activeTab', 'hasil_akhir')"]),
-
-            NavigationItem::make('2. Matriks Keputusan (X)')
-                ->icon('heroicon-m-table-cells')
-                ->isActiveWhen(fn (): bool => $this->activeTab === 'matriks_x')
-                ->extraAttributes(['wire:click' => "\$set('activeTab', 'matriks_x')"]),
-
-            NavigationItem::make('3. Normalisasi Matriks (R)')
-                ->icon('heroicon-m-calculator')
-                ->isActiveWhen(fn (): bool => $this->activeTab === 'matriks_r')
-                ->extraAttributes(['wire:click' => "\$set('activeTab', 'matriks_r')"]),
-
-            NavigationItem::make('4. Matriks Terbobot (Y)')
-                ->icon('heroicon-m-scale')
-                ->isActiveWhen(fn (): bool => $this->activeTab === 'matriks_y')
-                ->extraAttributes(['wire:click' => "\$set('activeTab', 'matriks_y')"]),
-
-            NavigationItem::make('5. Solusi Ideal (A+ / A-)')
-                ->icon('heroicon-m-sparkles')
-                ->isActiveWhen(fn (): bool => $this->activeTab === 'solusi_ideal')
-                ->extraAttributes(['wire:click' => "\$set('activeTab', 'solusi_ideal')"]),
-
-            NavigationItem::make('6. Jarak Euclidean (D+ / D-)')
-                ->icon('heroicon-m-arrows-right-left')
-                ->isActiveWhen(fn (): bool => $this->activeTab === 'jarak_ideal')
-                ->extraAttributes(['wire:click' => "\$set('activeTab', 'jarak_ideal')"]),
-        ];
-    }
 
     public function mount(TopsisService $topsisService): void
     {
@@ -87,6 +45,53 @@ class PerhitunganTopsisPage extends Page
     public function loadCalculation(TopsisService $topsisService): void
     {
         $this->topsisResult = $topsisService->calculate($this->periode);
+    }
+
+    public function content(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                Tabs::make('Tabs')
+                    ->persistTab()
+                    ->tabs([
+                        Tab::make('1. Perangkingan Akhir (Vi)')
+                            ->icon(Heroicon::Trophy)
+                            ->schema([
+                                View::make('filament.pages.topsis.hasil-akhir')
+                                    ->viewData(fn (): array => ['topsisResult' => $this->topsisResult]),
+                            ]),
+                        Tab::make('2. Matriks Keputusan (X)')
+                            ->icon(Heroicon::TableCells)
+                            ->schema([
+                                View::make('filament.pages.topsis.matriks-x')
+                                    ->viewData(fn (): array => ['topsisResult' => $this->topsisResult]),
+                            ]),
+                        Tab::make('3. Normalisasi Matriks (R)')
+                            ->icon(Heroicon::Calculator)
+                            ->schema([
+                                View::make('filament.pages.topsis.matriks-r')
+                                    ->viewData(fn (): array => ['topsisResult' => $this->topsisResult]),
+                            ]),
+                        Tab::make('4. Matriks Terbobot (Y)')
+                            ->icon(Heroicon::Scale)
+                            ->schema([
+                                View::make('filament.pages.topsis.matriks-y')
+                                    ->viewData(fn (): array => ['topsisResult' => $this->topsisResult]),
+                            ]),
+                        Tab::make('5. Solusi Ideal (A+ / A-)')
+                            ->icon(Heroicon::Sparkles)
+                            ->schema([
+                                View::make('filament.pages.topsis.solusi-ideal')
+                                    ->viewData(fn (): array => ['topsisResult' => $this->topsisResult]),
+                            ]),
+                        Tab::make('6. Jarak Euclidean (D+ / D-)')
+                            ->icon(Heroicon::ArrowsRightLeft)
+                            ->schema([
+                                View::make('filament.pages.topsis.jarak-ideal')
+                                    ->viewData(fn (): array => ['topsisResult' => $this->topsisResult]),
+                            ]),
+                    ]),
+            ]);
     }
 
     protected function getHeaderActions(): array
